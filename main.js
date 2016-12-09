@@ -1,10 +1,20 @@
-/*var object = Object.create({ x: 10, y: 20});  -  in this case delete operator doesn't work*/
-// but using object creation via object literal - deletion works
-var object = {
-    x: 10,
-    y: 20
+var greet = function(greeting){
+    return greeting + ". My name is " + this.name;
 };
-console.log(object.x);
-console.log(object.y);
-delete object["x"];
-console.log(object.x);
+
+var person = {
+    name: "John",
+    greet: greet
+};
+var anotherPerson = {
+    name: "Bob",
+    greet: greet
+};
+
+console.log(person.greet());
+console.log(anotherPerson.greet());
+console.log(anotherPerson.greet.call(person, "Bonjour"));
+console.log(anotherPerson.greet.call(person, ["Bonjour"]));
+
+var bound = greet.bind(anotherPerson);
+console.log(bound("Hello there"));
