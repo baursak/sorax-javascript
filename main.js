@@ -1,11 +1,3 @@
-var person = {
-    name: "sorax",
-    age: 20,
-    gender: "male",
-    // it's possible to use function as prop
-    sayHi: function(){
-        return "Hello";
-    }
-};
-
-console.log(person.sayHi());
+var object = Object.create({ x: 10, y: 20});
+console.log(object.x);
+console.log(object.y);
